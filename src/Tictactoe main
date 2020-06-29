@@ -79,7 +79,7 @@ while gameisover() == False:
         print(board3)
 
     else:
-        print("O pick you spot nigga")
+        print("O pick a spot")
         move_1 = input()
         boardset[move_1] = "O"
         board1 = "{0}|{1}|{2}".format(boardset['a'], boardset['b'], boardset['c'])
