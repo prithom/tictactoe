@@ -1,0 +1,96 @@
+""""
+
+a   b   c
+
+d   e   f
+
+g   h   i
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+boardset = {}
+boardset['a'] = "_"
+boardset['b'] = "_"
+boardset['c'] = "_"
+boardset['d'] = "_"
+boardset['e'] = "_"
+boardset['f'] = "_"
+boardset['g'] = "_"
+boardset['h'] = "_"
+boardset['i'] = "_"
+movenumber = 0
+print("X goes first type the square selection")
+movenumber += 1
+
+
+def gameisover():
+    if movenumber == 9:
+        return True
+    else:
+        xiswinner = Iswinner("X")
+        if xiswinner == True:
+            return True
+        oiswinner = Iswinner("O")
+        if oiswinner == True:
+            return True
+        return False
+
+
+
+def Iswinner(symbol):
+    if boardset['a'] == symbol:
+        if boardset['b'] == symbol and boardset['c'] == symbol:
+            return True
+        if boardset['d'] == symbol and boardset['g'] == symbol:
+            return True
+        if boardset['e'] == symbol and boardset['i'] == symbol:
+            return True
+    if boardset['i'] == symbol:
+        if boardset['f'] == symbol and boardset['c'] == symbol:
+            return True
+        if boardset['h'] == symbol and boardset['g'] == symbol:
+            return True
+        if boardset['e'] == symbol and boardset['a'] == symbol:
+            return True
+    return False
+
+while gameisover() == False:
+    if movenumber % 2 == 1:
+        print("X pick a spot")
+        move_1 = input()
+        boardset[move_1] = "X"
+        ##print(f"{boardset}a\nb")
+        board1 = "{0}|{1}|{2}".format(boardset['a'],boardset['b'],boardset['c'])
+        board2 = "{0}|{1}|{2}".format(boardset['d'], boardset['e'], boardset['f'])
+        board3 = "{0}|{1}|{2}".format(boardset['g'], boardset['h'], boardset['i'])
+        print(board1)
+        print(board2)
+        print(board3)
+
+    else:
+        print("O pick you spot nigga")
+        move_1 = input()
+        boardset[move_1] = "O"
+        board1 = "{0}|{1}|{2}".format(boardset['a'], boardset['b'], boardset['c'])
+        board2 = "{0}|{1}|{2}".format(boardset['d'], boardset['e'], boardset['f'])
+        board3 = "{0}|{1}|{2}".format(boardset['g'], boardset['h'], boardset['i'])
+        print(board1)
+        print(board2)
+        print(board3)
+    movenumber += 1
+
+if movenumber % 2 == 0:
+    print("X is the winner")
+else:
+    print("O is the winner")
